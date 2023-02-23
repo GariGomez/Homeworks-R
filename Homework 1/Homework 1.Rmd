@@ -1,0 +1,38 @@
+homework
+```{r}
+person1 <-c(160.30,162.81,170.39,167.24,172.50)
+person2 <-c(161.35,162.27,179.40,180.00,179.95)
+person3 <-c(180.55,182.97,189.10,185.11,175.12)
+person4 <-c(191.15,182.33,179.88,177.02,176.80)
+person5 <-c(161.87,170.36,172.97,172.88,172.16)
+
+v_totalperson <-c(person1,person2,person3,person4,person5)
+
+namesv <-c("January","February","March","April","May")
+
+names(person1) <-c("January","February","March","April","May")
+matrix1 <- matrix(v_totalperson, byrow = TRUE, ncol = 5)
+
+colnames(matrix1) <- namesv
+
+#Name row
+namespersons <-c("Juan", "Maria", "Pablo", "David","Rene")
+rownames(matrix1) <- namespersons
+
+
+#AVG person
+AVGrow <- rowMeans(matrix1)
+
+#AVG MONT
+AVGmont <- colMeans(matrix1)
+
+#ADDROW
+Matrix_addrow1 <-rbind(matrix1, AVGmont)
+
+#ADDcol
+MatrixTotal <-cbind(Matrix_addrow1, AVGrow)
+
+MatrixTotal
+
+```
+
