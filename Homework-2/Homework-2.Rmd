@@ -1,0 +1,65 @@
+Estructura de una funcion
+Entradas o argumentos: sirven para ingresar información necesaria para realizar el procedimiento de la función. Los argumentos pueden estar vacíos y a la espera de que el usuario ingrese valores, o pueden tener valores por defecto, esto significa que si el usuario no ingresa un valor, la función usará el valor por defecto. Una función puede tener o no argumentos de entrada, en los ejemplos se mostrarán estos casos.
+Cuerpo: está formado por un conjunto de instrucciones que transforman las entradas en las salidas deseadas. Si el cuerpo de la función está formado por varias instrucciones éstas deben ir entre llaves { }.
+Salidas: son los resultados de la función. Toda función debe tener al menos un resultado. Si una función entrega varios tipos de objetos se acostumbra a organizarlos en una lista que puede manejar los diferentes tipos de objetos.
+```{r}
+#Ejemplo
+
+Abs_Resta <-function(x,y){
+  resultado <- abs(x)-abs(y)
+  return(abs(resultado))
+}
+
+Abs_Resta(3,5)
+```
+Argumentos de una Funcion
+Los argumentos de una función son una serie de valores (opcionales) que se pasan a la función, de modo que ciertas variables dentro de estas posean diferentes valores en cada llamada a la función.
+
+Argumento por valor
+Se puedes definir un valor por default a un argumento. Por ejemplo, si queremos que nuestra función "potencia", realice la operación con exponente 4 si sólo se especifica el argumento base
+```{r}
+potencia <- function (base, exponente = 4) {
+   salida <- base^exponente
+   return(salida)
+}
+
+potencia(3)
+```
+FAMILIA APPLY 
+-LAPPLY 
+Esta diseñado para aplicar funciones a todos los elementos de una lista. La l de su nombre se refiere, precisamente, a lista.
+lapply siempre nos devolverá una lista como resultado. A diferencia de apply, sabemos que siempre obtendremos ub objeto de tipo lista después de aplicar una función, sin importar cuál función sea.
+La función apply() en R aplica una función a un dataframe, matriz, lista o vector, eligiendo si se va a aplicar a las filas o a las columnas. El resultado de esta función depende del tipo de objeto (lista, vector, etc…) que se utiliza (x).
+En donde:
+
+X es una lista o un objeto coercionable a una lista.
+FUN es la función a aplicar.
+Estos argumentos son idéntico a los de apply(), pero a diferencia aquí no especificamos MARGIN, pues las listas son estructuras con una unidimensionales, que sólo tienen largo.
+```{r}
+matriz <- matrix(1:9, ncol = 3)
+lapply(matriz, quantile, probs = .8)
+
+```
+
+SAPPLY
+La función sapply() en R está hecha para realizarle operaciones a una lista, pero igual admite otro tipo de objeto La diferencia con la función apply() es que la función devuelve un vector.
+Para usar la función sapply en R, deberás especificar la lista o el vector que deseas iterar en el primer argumento y la función que quieres aplicar a cada elemento del vector en el segundo. Ten en cuenta que puedes usar una función de cualquier paquete o una función personalizada
+```{r}
+sapply(1:4, sqrt)
+```
+
+VAPPLY
+Devuelve un vector con la longitud que tiene cada una de las listas introducidas como parámetro.
+```{r}
+x <- list(A = 1, B = 1:3, C = 1:7)
+x
+
+vapply(x, FUN = length, FUN.VALUE = 0L)
+```
+MAPPLY
+Realiza operaciones entre matrices y devuelve una lista o vector, a continuación se muestran algunas de las operaciones que admite:
+Suma el primer elemento de cada vector, después el segundo y así sucesivamente:
+```{r}
+mapply(sum, 1:5, 1:5, 1:5) 
+```
+
